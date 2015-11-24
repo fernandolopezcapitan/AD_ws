@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compat="http://schemas.android.com/apk/res-auto"
+    xmlns:compact="http://schemas.android.com/tools">
+    <item android:id="@+id/action_search"
+        android:title="Buscar"
+        android:icon="@android:drawable/ic_menu_search"
+        android:hint="Busca"
+        compat:showAsAction="ifRoom|collapseActionView"
+        compat:actionViewClass="android.support.v7.widget.SearchView"/>
+    <item android:id="@+id/action_configuration"
+        android:title="Configuración"
+        android:icon="@android:drawable/ic_menu_manage"/>
+    <item android:id="@+id/action_divider"
+        android:title="Favoritos"
+        android:icon="@android:drawable/btn_star_big_off"
+        compact:showAsAction="ifRoom"
+        />
+    <item android:id="@+id/action_logout"
+        android:title="Salir"
+        android:icon="@android:drawable/ic_menu_delete"
+        compact:showAsAction="ifRoom"/>
+</menu>

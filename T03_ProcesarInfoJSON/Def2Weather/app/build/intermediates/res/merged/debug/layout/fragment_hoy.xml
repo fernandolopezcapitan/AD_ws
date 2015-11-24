@@ -1,0 +1,208 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#e3f2fd"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:id="@+id/imgTiempo"
+                android:src="@mipmap/ic_launcher"
+                android:layout_weight="4"
+                android:layout_marginRight="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Ciudad"
+                android:id="@+id/txtCiudad"
+                android:layout_weight="6"
+                android:textSize="50dp"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="20º"
+                android:id="@+id/txtTemperatura"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:textSize="48dp"
+                android:layout_marginLeft="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Tiempo"
+                android:layout_weight="6"
+                android:id="@+id/txtTiempo"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Fecha Hora"
+                android:gravity="center"
+                android:id="@+id/txtFechaHora"
+                android:layout_margin="20dp"
+                android:layout_weight="4" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageViewMaxima"
+            android:src="@drawable/maxima"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="20º"
+            android:id="@+id/txtTemperaturaMaxima"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:layout_marginLeft="20dp" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:id="@+id/imageViewViento"
+            android:src="@drawable/viento"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="20 Km/h"
+            android:id="@+id/txtViento"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:layout_marginLeft="20dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/imageViewMinima"
+                android:src="@drawable/minima"
+                android:layout_weight="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="20º"
+                android:id="@+id/txtTemperaturaMinima"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:layout_marginLeft="20dp" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:id="@+id/imageViewLluvia"
+                android:src="@drawable/humedad"
+                android:layout_weight="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="31 %"
+                android:id="@+id/txtLluvia"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:layout_marginLeft="20dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/imageViewAmanecer"
+                android:src="@drawable/sunrise"
+                android:layout_weight="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Amanecer"
+                android:layout_weight="2"
+                android:id="@+id/txtAmanecer"
+                android:layout_gravity="center_vertical" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/imageViewAnochecer"
+                android:src="@drawable/sunset"
+                android:layout_weight="2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Amanecer"
+                android:layout_weight="2"
+                android:id="@+id/txtAnochecer"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+</RelativeLayout>
+<!-- From: file:/C:/Users/flopez/Desktop/Repositorio/AD_ws/T03_ProcesamientoInformacionJSON/Def2Weather/app/src/main/res/layout/fragment_hoy.xml -->

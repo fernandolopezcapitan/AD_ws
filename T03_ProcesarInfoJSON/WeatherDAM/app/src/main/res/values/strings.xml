@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WeatherDAM</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_label">app_label_busqueda</string>
+    <string name="search_hint">search_hint_busqueda</string>
+    <string name="title_activity_searchable">SearchableActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_other">OtherActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

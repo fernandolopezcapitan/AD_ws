@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-83c0226893401313f432a653f6ea3c2691d74f96.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\gson-2.3.1-c460599f4b86d30815301543ac4ba302c8abf7b8.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-4598d1c5fbb37039ce0eae8cdeef7aa4839391c2.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\classes-fb2b8dde084a02b118704a01e70fed68bfabef4a.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\.gradle\caches\modules-2\files-2.1\commons-lang\commons-lang\2.2\ef6449b62937bbd10e29ba9ed9a852754b861d26\commons-lang-2.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ef6449b62937bbd10e29ba9ed9a852754b861d26">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\commons-lang-2.2-732985a4c7408e7a3bb7d9e824d2775a298773bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\classes-36043886c7c1fb32a43fbef2bc9972d6c1bd8901.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\classes-669c85db5d335ec75a9fe4fcf13d3a7b02496f35.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\classes-2a03b49d2c88ef643c92a5d1221a7f68fc4ac37f.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\classes-0a28320a724e0ff096a7fb6d1bf7f6e12a258e78.jar" />
+    </item>
+    <item
+        jar="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\flopez\Desktop\Repositorio\AD_ws\T03_ProcesamientoInformacionJSON\Def2Weather\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-4947ad18e33e34e9686473eb58f14f278043142d.jar" />
+    </item>
+
+</items>

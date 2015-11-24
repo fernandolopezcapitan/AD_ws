@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeatherFLC</string>
+
+    <string name="title_section1">Hoy</string>
+    <string name="title_section2">Pronóstico</string>
+    <string name="title_section3">Favoritos</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
