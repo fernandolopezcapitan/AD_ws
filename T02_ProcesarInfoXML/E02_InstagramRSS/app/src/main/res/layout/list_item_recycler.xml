@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
         <ImageView
             android:layout_width="match_parent"
@@ -15,7 +16,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="autor"
             android:id="@+id/txt_autor"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:layout_weight="0.17" />
 
         <TextView
             android:layout_width="match_parent"
@@ -23,5 +25,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="fecha"
             android:id="@+id/txt_fecha"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:layout_weight="0.23" />
 </LinearLayout>

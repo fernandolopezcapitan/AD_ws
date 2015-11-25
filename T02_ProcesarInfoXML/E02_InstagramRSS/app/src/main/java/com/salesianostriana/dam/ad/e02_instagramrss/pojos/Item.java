@@ -12,7 +12,7 @@ public class Item {
 
     @Element(name = "author")
     private String autor;
-    @Element(name = "pubdate")
+    @Element(name = "pubDate")
     private String pubdate;
     @Element(name = "description")
     private String descripcion;
@@ -43,6 +43,7 @@ public class Item {
     }
 
     public String getDescripcion() {
+
         return descripcion;
     }
 

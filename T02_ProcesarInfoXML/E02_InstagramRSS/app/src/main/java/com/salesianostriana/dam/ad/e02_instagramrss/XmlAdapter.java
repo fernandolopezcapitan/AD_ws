@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.salesianostriana.dam.ad.e02_instagramrss.pojos.ItemImagen;
+import com.salesianostriana.dam.ad.e02_instagramrss.pojos.Item;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class XmlAdapter extends RecyclerView.Adapter<XmlAdapter.ViewHolder>{
 
-    private ArrayList<ItemImagen> imagenArrayList;
+    private ArrayList<Item> imagenArrayList;
     Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -39,7 +39,7 @@ public class XmlAdapter extends RecyclerView.Adapter<XmlAdapter.ViewHolder>{
     public XmlAdapter() {
     }
 
-    public XmlAdapter(Context context, ArrayList<ItemImagen> imagenArrayList) {
+    public XmlAdapter(Context context, ArrayList<Item> imagenArrayList) {
         this.context = context;
         this.imagenArrayList = imagenArrayList;
     }
@@ -59,9 +59,9 @@ public class XmlAdapter extends RecyclerView.Adapter<XmlAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.fecha.setText(imagenArrayList.get(position).getFecha());
+        holder.fecha.setText(imagenArrayList.get(position).getPubdate());
         holder.autor.setText(imagenArrayList.get(position).getAutor());
-        Picasso.with(context).load(imagenArrayList.get(position).getImagen()).resize(300, 300).into(holder.img);
+        Picasso.with(context).load(imagenArrayList.get(position).getDescripcion()).resize(300, 300).into(holder.img);
     }
 
     @Override

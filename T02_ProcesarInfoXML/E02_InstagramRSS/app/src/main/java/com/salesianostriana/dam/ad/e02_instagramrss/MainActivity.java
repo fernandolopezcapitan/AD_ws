@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+import com.salesianostriana.dam.ad.e02_instagramrss.pojos.Item;
 import com.salesianostriana.dam.ad.e02_instagramrss.pojos.ItemImagen;
 import com.salesianostriana.dam.ad.e02_instagramrss.pojos.Rss;
 
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<ItemImagen> imagenArrayList;
+    private ArrayList<Item> imagenArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,10 +122,12 @@ public class MainActivity extends AppCompatActivity {
 
             for(int i = 0; i <rss.getChannel().getItem().size(); i++){
                 String imagen = rss.getChannel().getItem().get(i).getDescripcion();
+                Log.i("IMAGEN DESCARGADA: ", imagen);
                 String autor = rss.getChannel().getItem().get(i).getAutor();
                 String fecha = rss.getChannel().getItem().get(i).getPubdate();
+                Log.i("fecha", rss.getChannel().getItem().get(i).getPubdate());
 
-                imagenArrayList.add(new ItemImagen(imagen, autor, fecha));
+                imagenArrayList.add(new Item(imagen, autor, fecha));
             }
 
             mAdapter = new XmlAdapter(MainActivity.this, imagenArrayList);

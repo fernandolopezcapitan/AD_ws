@@ -11,6 +11,7 @@ import java.util.List;
 @Element(name = "channel")
 public class Channel {
 
+    //
     @ElementList(name = "item", inline = true)
     private List<Item> item;
 
