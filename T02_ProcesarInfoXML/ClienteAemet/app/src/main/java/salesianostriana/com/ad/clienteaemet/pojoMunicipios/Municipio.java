@@ -19,6 +19,16 @@ public class Municipio {
     @Element
     private String cmun;
 
+    public Municipio() {
+    }
+
+    public Municipio(String dc, String nombre, String cpro, String cmun) {
+        this.dc = dc;
+        this.nombre = nombre;
+        this.cpro = cpro;
+        this.cmun = cmun;
+    }
+
     //Métodos
     public String getDc ()
     {

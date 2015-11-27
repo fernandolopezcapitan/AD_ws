@@ -14,6 +14,13 @@ public class Municipios {
     @ElementList
     private List<Municipio> municipio;
 
+    public Municipios() {
+    }
+
+    public Municipios(List<Municipio> municipio) {
+        this.municipio = municipio;
+    }
+
     public List<Municipio> getMunicipio() {
         return municipio;
     }
