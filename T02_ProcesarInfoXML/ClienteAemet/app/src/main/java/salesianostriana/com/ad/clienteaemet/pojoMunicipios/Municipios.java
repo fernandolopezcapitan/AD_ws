@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * Created by flopez on 26/11/2015.
  */
-@Root
+@Root(strict = false)
 public class Municipios {
 
-    @ElementList
+    @ElementList(inline = true)
     private List<Municipio> municipio;
 
     public Municipios() {

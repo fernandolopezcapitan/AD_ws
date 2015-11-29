@@ -39,10 +39,12 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
             minima = (TextView)v.findViewById(R.id.minimaPro);
         }
     }
-
+    //Constructor antiguo
     public AdapterPronostico(ArrayList<ItemPronostico> myDataset) {
         mDataset = myDataset;
     }
+
+
 
 
     @Override

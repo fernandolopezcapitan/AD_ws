@@ -5,8 +5,8 @@ import org.simpleframework.xml.Element;
 /**
  * Created by flopez on 26/11/2015.
  */
-@org.simpleframework.xml.Root
-public class Root {
+@org.simpleframework.xml.Root(strict = false)
+public class Aemet {
 
     @Element
     private String elaborado;
@@ -21,10 +21,10 @@ public class Root {
     private Prediccion prediccion;
 
 
-    public Root() {
+    public Aemet() {
     }
 
-    public Root(String elaborado, String nombre, String provincia, Prediccion prediccion) {
+    public Aemet(String elaborado, String nombre, String provincia, Prediccion prediccion) {
         this.elaborado = elaborado;
         this.nombre = nombre;
         this.provincia = provincia;
@@ -65,7 +65,7 @@ public class Root {
 
     @Override
     public String toString() {
-        return "Root{" +
+        return "Aemet{" +
                 "elaborado='" + elaborado + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", provincia='" + provincia + '\'' +

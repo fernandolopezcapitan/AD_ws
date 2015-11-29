@@ -1,10 +1,12 @@
 package salesianostriana.com.ad.clienteaemet.pojoMunicipios;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 
 /**
  * Created by flopez on 26/11/2015.
  */
+@ElementList(inline = true)
 public class Municipio {
 
     @Element
