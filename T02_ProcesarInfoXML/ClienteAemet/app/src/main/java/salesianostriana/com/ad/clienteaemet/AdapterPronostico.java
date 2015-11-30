@@ -2,23 +2,14 @@ package salesianostriana.com.ad.clienteaemet;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.TransformerException;
-
-import salesianostriana.com.ad.clienteaemet.pojoAemet.Aemet;
 import salesianostriana.com.ad.clienteaemet.pojoAemet.Dia;
 
 /**
@@ -55,10 +46,12 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
             sensacion_min = (TextView)v.findViewById(R.id.txt_sensacion_min);
         }
     }
-    /*
-    public AdapterPronostico(List<Dia> myDataset) {
+
+    public AdapterPronostico(Context context, List<Dia> myDataset) {
+        this.context=context;
         mDataset = myDataset;
-    }*/
+    }
+
     public AdapterPronostico(final Context context, String url, final TextView textViewciudad, final TextView textViewfecha) {
         this.context = context;
         this.url = url;
@@ -66,12 +59,12 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
         this.textViewfecha = textViewfecha;
 
 
-        VolleyAplication.requestQueue.add(new XmlCustomRequest<Aemet>(url, Aemet.class, null, new Response.Listener<Aemet>() {
+        /*VolleyAplication.requestQueue.add(new XmlCustomRequest<Aemet>(url, Aemet.class, null, new Response.Listener<Aemet>() {
             @Override
             public void onResponse(Aemet response) {
                 Log.i("TIEMPO", response.toString());
 
-                textViewciudad.setText(response.getNombre() + response.getProvincia());
+                textViewciudad.setText(response.getNombre() +" "+ response.getProvincia());
                 textViewfecha.setText(response.getElaborado());
                 mDataset = response.getPrediccion().getDias();
                 notifyDataSetChanged();
@@ -84,7 +77,7 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
                         Toast.makeText(context, "Error en la descarga de datos", Toast.LENGTH_LONG).show();
                     }
                 })
-        );
+        );*/
 
     }
 
@@ -103,9 +96,20 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
     public void onBindViewHolder(AdapterPronostico.ViewHolder holder, int position) {
 
         holder.fecha.setText(mDataset.get(position).getFecha());
-        holder.precipitacion_media.setText((CharSequence) mDataset.get(position).getProb_precipitacion());
-        holder.cota_nieve_minima.setText((CharSequence) mDataset.get(position).getCota_nieve_prov());
-        holder.estado_cielo.setText(mDataset.get(position).getEstado_cielo().get(position).getDescripcion());
+        holder.precipitacion_media.setText(mDataset.get(position).getProb_precipitacion().get("prob_precipitacion"));
+        holder.cota_nieve_minima.setText(mDataset.get(position).getCota_nieve_prov().get("cota_nieve_prov"));
+
+
+
+        for(int i = 0; i<6;i++){
+            String d = mDataset.get(position).getEstado_cielo().get(i).getDescripcion();
+            if(!d.isEmpty()){
+                holder.estado_cielo.setText(mDataset.get(position).getEstado_cielo().get(i).getDescripcion());
+            }
+            break;
+        }
+
+
         holder.temperatura_max.setText(mDataset.get(position).getTemperatura().getMaxima());
         holder.temperatura_min.setText(mDataset.get(position).getTemperatura().getMinima());
         holder.sensacion_max.setText(mDataset.get(position).getSens_termica().getMaxima());

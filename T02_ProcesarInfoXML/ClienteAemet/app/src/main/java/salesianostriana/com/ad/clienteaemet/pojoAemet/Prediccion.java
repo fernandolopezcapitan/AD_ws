@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Prediccion {
 
-    @ElementList
+    @ElementList(inline = true)
     private List<Dia> dias;
 
     public Prediccion() {

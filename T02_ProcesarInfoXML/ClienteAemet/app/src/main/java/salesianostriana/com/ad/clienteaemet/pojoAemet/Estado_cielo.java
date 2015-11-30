@@ -5,23 +5,22 @@ import org.simpleframework.xml.Attribute;
 /**
  * Created by flopez on 27/11/2015.
  */
+
 public class Estado_cielo {
 
-    @Attribute
+    @Attribute(name = "periodo", required = false)
     private String periodo;
 
-    @Attribute
+    @Attribute(name = "descripcion", required = false)
     private String descripcion;
 
-    private String content;
 
     public Estado_cielo() {
     }
 
-    public Estado_cielo(String periodo, String descripcion, String content) {
+    public Estado_cielo(String periodo, String descripcion) {
         this.periodo = periodo;
         this.descripcion = descripcion;
-        this.content = content;
     }
 
     public String getPeriodo() {
@@ -40,20 +39,12 @@ public class Estado_cielo {
         this.descripcion = descripcion;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     @Override
     public String toString() {
         return "Estado_cielo{" +
                 "periodo='" + periodo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", content='" + content + '\'' +
                 '}';
     }
 }

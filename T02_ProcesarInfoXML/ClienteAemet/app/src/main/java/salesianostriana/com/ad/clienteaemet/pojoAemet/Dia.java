@@ -20,7 +20,7 @@ public class Dia {
     @ElementMap(entry = "cota_nieve_prov", key = "periodo", attribute=true, inline=true)
     private Map<String,String> cota_nieve_prov;
 
-    @ElementList
+    @ElementList(inline = true)
     private List<Estado_cielo> estado_cielo;
 
     @Element
