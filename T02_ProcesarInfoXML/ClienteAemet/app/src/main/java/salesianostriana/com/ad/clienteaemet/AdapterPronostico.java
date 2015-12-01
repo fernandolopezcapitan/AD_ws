@@ -96,9 +96,8 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
     public void onBindViewHolder(AdapterPronostico.ViewHolder holder, int position) {
 
         holder.fecha.setText(mDataset.get(position).getFecha());
-        holder.precipitacion_media.setText(mDataset.get(position).getProb_precipitacion().get("prob_precipitacion"));
-        holder.cota_nieve_minima.setText(mDataset.get(position).getCota_nieve_prov().get("cota_nieve_prov"));
-
+        holder.precipitacion_media.setText(mDataset.get(position).getProb_precipitacion().get("00-24")+" %");
+        holder.cota_nieve_minima.setText(mDataset.get(position).getCota_nieve_prov().get("00-24")+" m");
 
 
         for(int i = 0; i<6;i++){
@@ -108,7 +107,6 @@ public class AdapterPronostico extends RecyclerView.Adapter<AdapterPronostico.Vi
             }
             break;
         }
-
 
         holder.temperatura_max.setText(mDataset.get(position).getTemperatura().getMaxima());
         holder.temperatura_min.setText(mDataset.get(position).getTemperatura().getMinima());
