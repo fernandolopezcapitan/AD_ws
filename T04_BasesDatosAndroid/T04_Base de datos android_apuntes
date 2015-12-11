@@ -7,3 +7,26 @@ Bases de Datos en Android (III): Consulta y recuperación URL
 
 Consulta y recuperación de datos.
 Tutorial de creación y uso de CursorAdapter
+------------------------
+9/12/2015
+GreenDao (http://greendao-orm.com/documentation/)
+
+Paso 0: Diseñar nuestro modelo de datos. Un diagrama de clases
+
+Paso 1 (todo este paso se hace con greendao generator .jar , una aplicaciond de escritorio): Generar el codigo fuente q vmos a utilizar
+
+http://salesianos-triana.tutormoodle.com/mod/page/view.php?id=27846
+	- Pojo (entity)
+	- CRUD (DAO)
+
+ * Crear Scheme
+ * Añadir entity(s) con sus propiedades
+ * Generar todo el esquema en una dirección en particular
+
+
+Paso 2 (con greendao a secas, aplicacion movil): copiar el codigo fuente generado y usarlo
+
+
+
+
+
