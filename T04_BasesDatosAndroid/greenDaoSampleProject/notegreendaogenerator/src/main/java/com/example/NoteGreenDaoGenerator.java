@@ -26,8 +26,7 @@ public class NoteGreenDaoGenerator {
     }
 
     // Añadirle las entidades
-    // Schema tiene un metodo addEntity q le pasas la clase q quieres (en este caso "Note")
-    // ver
+
     private static void addNote(Schema schema) {
         Entity note = schema.addEntity("Note");
         note.addIdProperty();
