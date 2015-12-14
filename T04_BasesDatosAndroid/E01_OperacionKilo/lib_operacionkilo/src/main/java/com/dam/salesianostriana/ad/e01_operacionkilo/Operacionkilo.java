@@ -16,9 +16,9 @@ public class Operacionkilo {
 
         try {
 
-            if (!Files.isDirectory(Paths.get("../app/src/main/java/com/dam/salesianostriana/ad/e01_operacionkilo/")))
-                Files.createDirectory(Paths.get("../app/src/main/java/com/dam/salesianostriana/ad/e01_operacionkilo/"));
-            new DaoGenerator().generateAll(schema, "../app/src/main/java/com/dam/salesianostriana/ad/e01_operacionkilo/");
+            if (!Files.isDirectory(Paths.get("./src-gen")))
+                Files.createDirectory(Paths.get("./src-gen"));
+            new DaoGenerator().generateAll(schema, "./src-gen");
         } catch (Exception e) {
             e.printStackTrace();
         }
