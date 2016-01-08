@@ -27,6 +27,42 @@ http://salesianos-triana.tutormoodle.com/mod/page/view.php?id=27846
 Paso 2 (con greendao a secas, aplicacion movil): copiar el codigo fuente generado y usarlo
 
 
+----------------------------
+Realciones 1:N y N:M
+Greendao no soporte N:M, así q hay q pensar en dos 1:N
+http://greendao-orm.com/documentation/relations/
+
+----------------------------
+Plantearnos estas preguntas.
+
+1. ¿Que hace la app sin wifi?
+	a) no estoy logueado
+		-mostrar lista de bares
+		-mostrar bar en particular
+		-avatar y nombre anonimo
+		-desabilitar lo q no se puede hacer (si pulsa un boton desabilitado muestre un toast diciendo q no tiene conexión)
+	b) estoy logueado
+		-lo mismo q el anterior
+		-cambiar el nombre de color o poner al lado del nombre en el navigation q no tiene wifi
+
+Model POJO
+- Sitio
+- Valoracion
+- Comentario
+- Usuario
+... creadas con jsonschema2pojo (GSON)
+
+greenDAO (greenDAO generator)
+- Sitio
+- ...
 
 
+(gson)  Sitio getGSONAsGreenDAO (Sitio s){
+	
+	gson.Sitio nuevo = new gson.Sitio (s.nombre, s.telefono, s.descripcion, ...)
+	return nuevo;
+}
+
+- en preferencias habra q guardar la ultima fecha de conexion
+- 
 
