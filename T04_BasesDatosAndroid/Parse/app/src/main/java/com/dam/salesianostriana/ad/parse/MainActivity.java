@@ -2,17 +2,13 @@ package com.dam.salesianostriana.ad.parse;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 
 import java.util.List;
 
@@ -26,22 +22,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lista = (ListView) findViewById(R.id.listView);
-
-        ArrayAdapter<Notas> adaptador = new ArrayAdapter<Notas>(this,
-                android.R.layout.simple_list_item_1,notas);
-
-        lista.setAdapter(adaptador);
-
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Seleccionado: " + notas.get(position),
-                        Toast.LENGTH_SHORT).show();
-
-                //view.animate().setDuration(1000).rotationX(360);
-            }
-        });
+//        lista = (ListView) findViewById(R.id.listView);
+//
+//        ArrayAdapter<Notas> adaptador = new ArrayAdapter<Notas>(this,
+//                android.R.layout.simple_list_item_1,notas);
+//
+//        lista.setAdapter(adaptador);
+//
+//        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, "Seleccionado: " + notas.get(position),
+//                        Toast.LENGTH_SHORT).show();
+//
+//                //view.animate().setDuration(1000).rotationX(360);
+//            }
+//        });
 
 
 //        // Código de almacenamiento de un objeto
@@ -73,29 +69,60 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // Codigo de recuperación de todos los objetos de una misma clase
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Todo");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null) {
-                    for (ParseObject object : objects) {
-                        Log.d("OBJECTID", object.getObjectId());
-                        Log.d("FECHA", object.get("Fecha").toString());
-                        Log.d("CONCEPTO", object.get("Concepto").toString());
-                    }
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Todo");
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            @Override
+//            public void done(List<ParseObject> objects, ParseException e) {
+//                if (e == null) {
+//                    for (ParseObject object : objects) {
+//                        Log.d("OBJECTID", object.getObjectId());
+//                        Log.d("FECHA", object.get("Fecha").toString());
+//                        Log.d("CONCEPTO", object.get("Concepto").toString());
+//                        //notas.add("OBJECTID: "+object.getObjectId()+"\nFECHA: "+object.get("Fecha").toString()+"\nCONCEPTO: "+object.get("Concepto").toString());
+//                    }
+//
+//                } else {
+//
+//                    Log.e("ERROR",Integer.toString(e.getCode()));
+//                }
+//            }
+//        });
 
-                } else {
+        ParseQueryAdapter<ParseObject> adapter = new ParseQueryAdapter<ParseObject>(this, "Todo");
+        adapter.setTextKey("Fecha");
+        adapter.setTextKey("Concepto");
+        //adapter.setImageKey("photo");
 
-                    Log.e("ERROR",Integer.toString(e.getCode()));
-                }
-            }
-        });
-
-
-
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
 
 
 
 
+
+
+
+    }
+
+// Hacer una clase adaptador
+
+
+
+    @Override
+    public View getItemView(ParseObject object, View v, ViewGroup parent) {
+        if (v == null) {
+            v = View.inflate(this, R.layout.activity_main, null);
+        }
+
+        // Take advantage of ParseQueryAdapter's getItemView logic for
+        // populating the main TextView/ImageView.
+        // The IDs in your custom layout must match what ParseQueryAdapter expects
+        // if it will be populating a TextView or ImageView for you.
+        super.getItemView(object, v, parent);
+
+        // Do additional configuration before returning the View.
+        TextView descriptionView = (TextView) v.findViewById(R.id.listView);
+        descriptionView.setText(object.getString("Concepto"));
+        return v;
     }
 }

@@ -1,0 +1,36 @@
+https://parse.com/docs/android/guide#user-interface-parsequeryadapter
+
+ParseQueryAdapter
+
+To display collections of data, we provide an implementation of Adapter in the Parse Android SDK. Instead of using a basic ListAdapter backed by a static array of objects, our ParseQueryAdapter provides a layer of abstraction and allows you to easily display data from one of your Parse classes in your AdapterView of choice (e.g. ListView or GridView).
+
+To use a ParseQueryAdapter to display data in an Activity, follow the steps outlined below in your Activity's onCreate:
+
+    Instantiate a ParseQueryAdapter.
+    Customize it as necessary (see the below subsections for detailed instructions to display data from specific queries, change the UI of the Views to be displayed, and more).
+    Set your new Adapter on your AdapterView with setAdapter().
+
+When the AdapterView is attached to the window, your ParseQueryAdapter will automatically fetch the first set of data. This subclass simplifies the code that would otherwise be involved with:
+
+    Pagination, with a row that can be tapped to load the next page.
+    Configurable downloading and displaying of remote images within rows.
+    Automatic loading and management of the Parse objects array.
+    Callbacks from major events in the data cycle.
+
+Consider the following code, which sets up a very simple ParseQueryAdapter to display data in a ListView. You can be up and running with a functional ListView full of data with very little configuration.
+
+// Inside an Activity
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  // Uses a layout with a ListView (id: "listview"), which uses our Adapter.
+  setContentView(R.layout.main);
+
+  ParseQueryAdapter<ParseObject> adapter = new ParseQueryAdapter<ParseObject>(this, "Instrument");
+  adapter.setTextKey("name");
+  adapter.setImageKey("photo");
+
+  ListView listView = (ListView) findViewById(R.id.listview);
+  listView.setAdapter(adapter);
+}
+
+//// Añadir esta dependencia compile 'com.parse:parseui-widget-android:0.0.1'
