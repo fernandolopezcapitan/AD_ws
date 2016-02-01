@@ -1,3 +1,30 @@
+TEMA 6. BaaS (parse.com SDK)
+----------------------------
+BaaS -> Backend as a Service -> Backend es la parte q no se ve (pagina 9)
+Los más usados parse,kinvey,sencha
+
+Pagina 12 en adelante
+1. Data storage (almacenaje de datos)
+    Ahora está de moda nodejs + mongoDB
+              (js)   (No SQL) JSON
+
+2. Push notifications (notificaciones push)
+
+3. Third party data integracion (integración con otros sistemas)
+
+4. Cross-platform support (soporte multiplataforma - Android/iOS/js)
+
+5. User management (getión de usuarios)
+
+6. Addicional features (características adicionales)
+
+
+https://parse.com/docs/android/guide
+
+https://parse.com/docs/android/api/
+------------------------------------------
+
+
 https://parse.com/docs/android/guide#user-interface-parsequeryadapter
 
 ParseQueryAdapter
