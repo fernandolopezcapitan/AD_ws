@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import com.parse.ParseObject;
 
-
-
 import java.text.SimpleDateFormat;
 
 /**
@@ -18,6 +16,10 @@ public class ParseQueryAdapter extends com.parse.ParseQueryAdapter<ParseObject> 
 
     public ParseQueryAdapter(Context context, String className) {
         super(context, className);
+    }
+
+    public ParseQueryAdapter(MainActivity context, QueryFactory<ParseObject> queryFactory) {
+        super(context, queryFactory);
     }
 
     @Override
