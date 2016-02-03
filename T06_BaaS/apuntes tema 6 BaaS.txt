@@ -61,3 +61,7 @@ public void onCreate(Bundle savedInstanceState) {
 }
 
 //// Añadir esta dependencia compile 'com.parse:parseui-widget-android:0.0.1'
+
+----------------------- Miercoles 3/2/2016
+Queries (https://parse.com/docs/android/guide#queries-relational-queries)
+

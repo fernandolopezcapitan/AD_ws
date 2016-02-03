@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaNotas = (ListView) findViewById(R.id.listView);
 
-        NotasAdapter notasAdapter = new NotasAdapter(this,"Todo");
+        ParseQueryAdapter notasAdapter = new ParseQueryAdapter(this,"Todo");
         listaNotas.setAdapter(notasAdapter);
 
         //notasAdapter.notifyDataSetChanged();

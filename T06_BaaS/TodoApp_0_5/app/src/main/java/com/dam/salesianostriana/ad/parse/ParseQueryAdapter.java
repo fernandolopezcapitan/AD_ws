@@ -13,9 +13,9 @@ import java.text.SimpleDateFormat;
 /**
  * Created by flopez on 01/02/2016.
  */
-public class NotasAdapter extends ParseQueryAdapter<ParseObject> {
+public class ParseQueryAdapter extends com.parse.ParseQueryAdapter<ParseObject> {
 
-    public NotasAdapter(Context context, String className) {
+    public ParseQueryAdapter(Context context, String className) {
         super(context, className);
     }
 
