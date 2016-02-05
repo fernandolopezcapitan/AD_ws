@@ -65,3 +65,26 @@ public void onCreate(Bundle savedInstanceState) {
 ----------------------- Miercoles 3/2/2016
 Queries (https://parse.com/docs/android/guide#queries-relational-queries)
 
+----------------------- Jueves 4/2/2016
+
+Para gestionar ususarios ->> ParseUser (https://parse.com/docs/android/guide#users)
+https://github.com/ParsePlatform/ParseUI-Android
+
+Interfaces login by Parse.com :DD
+https://parse.com/docs/android/guide#user-interface-basic-integration
+
+
+----------------------- Viernes 5/2/2016
+
+Ver proyecto de luismi-leandro subido a la plataforma
+Saving objects
+
+https://parse.com/docs/android/guide#objects-saving-objects
+
+Deleting Objects
+https://parse.com/docs/android/guide#objects-deleting-objects
+
+
+//se asigna el usuario logueado
+newtodo.put("user_id",ParseUser.getCurrent());
+newtodo.saveInBackGround();
