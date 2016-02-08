@@ -2,9 +2,7 @@ package com.dam.salesianostriana.ad.parse;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -15,16 +13,15 @@ import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ui.ParseLoginBuilder;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +30,6 @@ import java.util.GregorianCalendar;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ListView listaNotas;
-    //EditText nuevo_concepto;
     Spinner sp_orden, sp_fecha;
     ParseQueryAdapter adapter;
 
@@ -42,23 +38,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        ParseLoginBuilder builder = new ParseLoginBuilder(MainActivity.this);
+        startActivityForResult(builder.build(), 0);
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-
-        //nuevo_concepto = (EditText) findViewById(R.id.nueva_nota_concepto);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,EnviarNotaActivity.class);
+                /*Intent i = new Intent(MainActivity.this,EnviarNotaActivity.class);
                 startActivity(i);
-                MainActivity.this.finish();
+                MainActivity.this.finish();*/
 
-                //FragmentManager fragmentManager = getSupportFragmentManager();
-                //DialogoNuevaNota dialogo = new DialogoNuevaNota();
-                //DialogoPersonalizado dialogo = new DialogoPersonalizado();
-                //dialogo.show(fragmentManager, "tagAlerta");
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoNuevaNota dialogo = new DialogoNuevaNota();
+                dialogo.show(fragmentManager, "tagAlerta");
 
             }
         });

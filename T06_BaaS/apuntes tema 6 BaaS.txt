@@ -88,3 +88,7 @@ https://parse.com/docs/android/guide#objects-deleting-objects
 //se asigna el usuario logueado
 newtodo.put("user_id",ParseUser.getCurrent());
 newtodo.saveInBackGround();
+
+// Incluir lo de cerrarsesion
+
+// query.whereEqualTo("playerName", "Dan Stemkoski");

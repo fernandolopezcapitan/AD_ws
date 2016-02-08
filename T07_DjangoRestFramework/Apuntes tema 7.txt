@@ -1,0 +1,20 @@
+Requisitos
+
+http://salesianos-triana.tutormoodle.com/mod/url/view.php?id=29772
+
+Instalacion
+
+http://salesianos-triana.tutormoodle.com/mod/url/view.php?id=29775
+
+Ejemplo rapido 
+
+http://www.django-rest-framework.org/#example
+
+Quickstart
+
+http://www.django-rest-framework.org/tutorial/quickstart/#project-setup
+
+//Sustituir 
+# Create a virtualenv to isolate our package dependencies locally
+virtualenv env
+source env/bin/activate.bak 
