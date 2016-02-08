@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TodoApp 0.9 FLC</string>
+    <string name="app_name">TodoApp 1.0 FLC</string>
 
     <string-array name="Fecha">
         <item>Todas</item>

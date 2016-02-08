@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.Date;
 
@@ -20,20 +21,20 @@ import java.util.Date;
  */
 public class DialogoNuevaNota extends DialogFragment {
 
+    String objectId;
 
+    public DialogoNuevaNota() {
+    }
+    public DialogoNuevaNota(String objectId) {
+        this.objectId = objectId;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        // Lo rescata pero no escribe la nota --------
-        //View transactionLayout = View.inflate(getContext(), R.layout.nueva_nota, null);
-        //nuevo_concepto = (EditText) transactionLayout.findViewById(R.id.nueva_nota_concepto);
-        //nuevo_concepto = (EditText) getActivity().findViewById(R.id.nueva_nota_concepto);
-        // -------------------------------------------
         final EditText input = new EditText(getActivity());
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
 
@@ -45,18 +46,18 @@ public class DialogoNuevaNota extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
 
-
                         // Creación de una nota
                         ParseObject nuevaNota = new ParseObject("Todo");
 
                         String nota = input.getText().toString();
                         //Log.i("NOTA",nota);
-                        Toast tostada = Toast.makeText(getContext(), "Nueva nota creada"+nota,Toast.LENGTH_SHORT);
-                        tostada.setGravity(Gravity.BOTTOM|Gravity.LEFT,24,24);
-                        tostada.show();
+                        /*Toast tostada = Toast.makeText(getContext(), "Nueva nota creada " + objectId, Toast.LENGTH_SHORT);
+                        tostada.setGravity(Gravity.BOTTOM | Gravity.LEFT, 24, 24);
+                        tostada.show();*/
 
-                        nuevaNota.put("Concepto",nota);
+                        nuevaNota.put("Concepto", nota);
                         nuevaNota.put("Fecha", new Date());
+                        nuevaNota.put("user_id", ParseUser.getCurrentUser());
 
                         nuevaNota.saveInBackground();
 

@@ -1,17 +1,14 @@
 package com.dam.salesianostriana.ad.parse;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,17 +18,24 @@ import android.widget.Toast;
 
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
+/////////////////////////////////////////////////////////////////////////////////////////
+// Para poder ver algunas las notas creadas entrar como:
+// usuario: flopez
+// pass: 123456
+/////////////////////////////////////////////////////////////////////////////////////////
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ListView listaNotas;
     Spinner sp_orden, sp_fecha;
     ParseQueryAdapter adapter;
+    ParseUser currentUser;
+    String objectId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,29 +48,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            objectId = currentUser.getObjectId();
+
+        }
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent i = new Intent(MainActivity.this,EnviarNotaActivity.class);
-                startActivity(i);
-                MainActivity.this.finish();*/
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                DialogoNuevaNota dialogo = new DialogoNuevaNota();
+                DialogoNuevaNota dialogo = new DialogoNuevaNota(objectId);
                 dialogo.show(fragmentManager, "tagAlerta");
 
             }
         });
 
-
-
         listaNotas = (ListView) findViewById(R.id.listView);
         sp_orden = (Spinner) findViewById(R.id.sp_orden);
         sp_fecha =(Spinner) findViewById(R.id.sp_fecha);
 
+
+
         // Al abrir el activity consulta todas las notas, sin ningún filtro
         adapter = new ParseQueryAdapter(MainActivity.this,"Todo");
+
         listaNotas.setAdapter(adapter);
 
         // La siguiente línea de código conecta el evento LongClick sobre un elemento
@@ -129,6 +137,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public ParseQuery<ParseObject> create() {
                 ParseQuery query = new ParseQuery("Todo");
+                query.whereEqualTo("user_id", ParseUser.getCurrentUser());
+
 
                 if (seleccFecha.equalsIgnoreCase("Hoy")) {
 
@@ -223,49 +233,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        //adapter = new ParseQueryAdapter(MainActivity.this,"Todo");
-        //listaNotas.setAdapter(adapter);
     }
 
-    public static class DialogoPersonalizado extends DialogFragment {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-        //EditText nuevo_concepto;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        String mensaje = "";
+        switch(id) {
 
+            case R.id.logout: mensaje = "Cerrar sesión";
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
+                ParseUser.logOut();
+                ParseLoginBuilder builder = new ParseLoginBuilder(MainActivity.this);
+                startActivityForResult(builder.build(), 0);
+                MainActivity.this.finish();
+                break;
 
-            //nuevo_concepto = (EditText) getView().findViewById(R.id.nueva_nota_concepto);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            LayoutInflater inflater = getActivity().getLayoutInflater();
-
-            builder.setView(inflater.inflate(R.layout.nueva_nota, null))
-                    .setMessage("Concepto")
-                    .setTitle("Insertar nueva nota")
-                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            Toast tostada = Toast.makeText(getContext(), "Nueva nota creada", Toast.LENGTH_SHORT);
-                            tostada.setGravity(Gravity.BOTTOM | Gravity.LEFT, 24, 24);
-                            tostada.show();
-
-                            // Creación de una nota
-                            ParseObject nuevaNota = new ParseObject("Todo");
-
-                            nuevaNota.put("Concepto", "AAAA"/*nuevo_concepto.getText().toString()*/);
-                            nuevaNota.put("Fecha", new Date());
-
-                            nuevaNota.saveInBackground();
-                        }
-                    })
-                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            return builder.create();
         }
+
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+
+        return super.onOptionsItemSelected(item);
     }
+
 }

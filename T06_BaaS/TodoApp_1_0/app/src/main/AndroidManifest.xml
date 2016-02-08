@@ -22,6 +22,13 @@
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
                 android:value="true"/>
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
+                android:value="false"/>
+
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.MIN_PASSWORD_LENGTH"
+                android:value="5"/>
         </activity>
         <activity android:name=".MainActivity" >
             <intent-filter>
@@ -29,11 +36,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".EnviarNotaActivity"
-            android:label="@string/title_activity_enviar_nota"
-            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
