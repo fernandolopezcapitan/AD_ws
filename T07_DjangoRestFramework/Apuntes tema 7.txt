@@ -18,3 +18,265 @@ http://www.django-rest-framework.org/tutorial/quickstart/#project-setup
 # Create a virtualenv to isolate our package dependencies locally
 virtualenv env
 source env/bin/activate.bak 
+
+--------------------- Miércoles 10/02/2015 ---------------------
+
+Manual Quickstart
+
+Ver capturas
+
+Seguir http://www.django-rest-framework.org/tutorial/quickstart/#project-setup
+
+|									|
+|	mkdir Crea un nuevo directorio	|
+|	rmdir Borra un directorio		|
+|___________________________________|
+
+
+Pasos a seguir:
+
+1. Abrimos la CMD. 
+
+Vamos a proceder a la instalación de virtualenv, para ello nos vamos
+al directorio donde tengamos instalado Python 3 (alguno de la version 3) instalado.
+El comando que habría que ejecutar quedaría tal que así:
+
+				"C:\Python34\Scripts\pip.exe install virtualenv"
+
+2. Instalado virtualenv, lo siguiente que haremos será crear el directorio de ejecución.
+Lo he hecho en el escritorio. Creamos un directorio que se llame como nuestro proyecto, en este caso lo he llamado "tutorial" (mkdir tutorial).
+
+	2.1. Entramos en el y una vez dentro tendremos que ejecutar el siguiente comando:
+	
+			 	 virtualenv -p C:\Python34\python.exe env
+
+3. Para entrar en el entorno virtual entramos en env\Scripts que se debe encontrar dentro de la carpeta que hemos creado (tutorial en este caso) y ahí podremos llamar a "activate.bat" para activarlo y "deactivate.bat" para desactivarlo. Los siguientes pasos se deben hacer con el "(env)" activado
+
+4. Ahora procederemos a la instalación de django:
+
+					pip install django
+					pip install djangorestframework
+
+5. Añadir plantilla bootstraap:
+				
+					pip install django-admin-bootstrapped
+
+6. Seteamos el nuevo proyecto en la carpeta "tutorial":
+
+		django-admin startproject tutorial .
+
+		cd tutorial
+
+		django-admin startapp quicktutorial
+		
+		python manage.py migrate
+
+		//Se crea el superusuario.
+
+		python manage.py createsuperuser
+
+		En este caso que lo he creado como :
+
+					User: admin
+					Email: admin@admin.com
+					Pass: 12345
+
+7. Abrimos el proyecto con Pycharm y nos creamos en la carpeta quicktutorial creamos un fichero llamado "serializers.py" copiamos esto en el fichero serializers:
+
+
+from django.contrib.auth.models import User, Group
+from rest_framework import serializers
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'groups')
+
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('url', 'name')
+
+8. En Views.py, copiamos y pegamos esto:
+
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+
+APUNTE PETICIONES
+	
+	..../users GET -> todos
+	..../users/pk GET-> 1 objeto
+	..../users POST -> insertar
+	..../users PUT -> actualizar
+	..../users/PK PUT ->actualizar un objeto
+	..../users DELETE -> borrar
+
+9. Nos vamos al fichero "urls.py" y hacemos una fusión de esto, con lo que ya tenemos ahí:
+
+				from django.conf.urls import url, include
+				from rest_framework import routers
+				from tutorial.quickstart import views
+
+				router = routers.DefaultRouter()
+				router.register(r'users', views.UserViewSet)
+				router.register(r'groups', views.GroupViewSet)
+
+				# Wire up our API using automatic URL routing.
+				# Additionally, we include login URLs for the browsable API.
+				urlpatterns = [
+				    url(r'^', include(router.urls)),
+				    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+				]
+
+Finalmente quedaría el fichero tal que así: 
+
+				from django.conf.urls import include, url
+				from django.contrib import admin
+				from rest_framework import routers
+				from tutorial.quickstart import views
+
+				router = routers.DefaultRouter()
+				router.register(r'users', views.UserViewSet)
+				router.register(r'groups', views.GroupViewSet)
+
+
+				urlpatterns = [
+				    url(r'^admin/', include(admin.site.urls)),
+				    url(r'^api/', include(router.urls)),
+				    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+				]
+
+10. Añadir las "INSTALLED_APPS" que se encuentra en el settings.py, incluye bootstrap:
+
+						'django_admin_bootstrapped',
+						'django.contrib.admin',
+
+						...
+						...
+						...
+
+						'tutorial.quicktutorial',			
+						'rest_framework',
+
+
+11. En REST_FRAMEWORK:
+
+Aquí hemos cambiado "IsAdminUser" por AllowAny
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+    'PAGE_SIZE': 10
+}
+
+12. Creamos la configuración de ejecución y le damos play: 
+	
+	Script: manage.py
+	Parametros: runserver
+	working directorio c:\Tutorial\....
+
+	and play!
+
+
+Para poder usar ImageField necesitamos tener instalado el paquete pillow
+pip install Pillow
+
+El serializador es quien sabe trnasformar una clase modelo en json y viceversa
+(http://www.django-rest-framework.org/tutorial/quickstart/#serializers)
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+
+        # Campos que van a ser serializados: url y name (lo que se muestra en el json)
+        fields = ('url', 'name')
+
+El HyperlinkedModelSerializer nos proporciona la gestion de las claves como url. Si cambias HyperlinkedModelSerializer a ModelSerializer pasa a darte las claves normales.
+
+Comprobar el contenido static en setting en el ejemplo de Luismi
+
+En el fichero url añadir url (r'^media/.......)
+
+------------------------ VIernes
+
+*****Antes  de modificar parar la ejecucion del pycharm y cerrar la web (localhost....)
+
+En settings.py 
+
+Sustituir 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+    'PAGE_SIZE': 10
+} 
+
+por 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    'PAGE_SIZE': 10
+}
+
+handlerbass ->> interpreta peticiones de ayax en web 
+
+Pasos para implementar la autenticación mediante Token
+(http://salesianos-triana.tutormoodle.com/mod/page/view.php?id=30042)
+
+1. Instalar, dentro del entorno, los siguientes paquetes (desde la consola)
+
+  (env) c:\ruta....>pip install django-rest-auth django-allauth
+
+2. Incluir las siguientes referencias (si no están añadidas aun) dentro de INSTALLED_APPS en settings.py
+
+ 'rest_framework'
+ 'rest_framework.authtoken',
+ 'django.contrib.sites',
+ 'rest_auth',
+ 'allauth',
+ 'allauth.account',
+ 'allauth.socialaccount',
+ 'rest_auth.registration',
+
+Fuera, en el mismo fichero settings.py, añadimos:
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+3. Definir los siguientes valores dentro del diccionario REST_FRAMEWORK
+
+ 'DEFAULT_PERMISSION_CLASSES': (
+ 'rest_framework.permissions.IsAuthenticated',
+ ),
+ 'DEFAULT_AUTHENTICATION_CLASSES': (
+ 'rest_framework.authentication.TokenAuthentication',
+ ),
+
+4. Añadimos las siguientes entradas en el fichero de urls.py
+
+ url(r'^rest-auth/', include('rest_auth.urls')),
+ url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+
+
+5. Desde la consola (cmd) sincronizar la base de datos
+
+(env) c:\ruta....>python manage.py migrate
