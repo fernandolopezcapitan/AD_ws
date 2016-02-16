@@ -21,10 +21,10 @@ from thingloc import settings
 
 
 router = routers.DefaultRouter()
-router.register(r'usuario', views.UsuarioViewSet)
-router.register(r'objetos', views.ObjetosViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'objeto', views.ObjetoViewSet)
 router.register(r'categoria', views.CategoriaViewSet)
-router.register(r'mensajes', views.MensajesViewSet)
+router.register(r'mensaje', views.MensajeViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -32,4 +32,11 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+        # Añadimos estas dos entradas para servir contenido estático
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.STATIC_ROOT
+    }),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT
+    })
 ]

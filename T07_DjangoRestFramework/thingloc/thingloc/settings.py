@@ -120,8 +120,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+# URL parcial al contenido estático
 STATIC_URL = '/static/'
+
+# URL parcial al contenido multimedia
+# Django directamente la busca dentro de STATIC_URL
+MEDIA_URL = '/media/'
+
+# URL completa para el contenido multimedia
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'media')
+
+# URL completa para el contenido estático
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static-only')
+
+# Lista de directorios adicionales donde buscar contenido estático
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static'),
+)

@@ -1,25 +1,37 @@
 # -*- coding: utf-8 -*-
-from thingloc.quickstart.models import Usuario, Objetos, Categoria, Mensajes
+from django.contrib.auth.models import User, Group
+from thingloc.quickstart.models import Objeto, Categoria, Mensaje
 from rest_framework import serializers
 __author__ = 'flopez'
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id','username','password','first_name','last_name','email')
+
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ('url', 'name')
 
 
 """
 El serializador de Usuarios
 """
 
-class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Usuario
-        fields = ('id','username','password','first_name','last_name','email')
+# class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = Usuario
+#         fields = ('id','username','password','first_name','last_name','email')
 
 """
 El serializador de Objetos
 """
 
-class ObjetosSerializer(serializers.HyperlinkedModelSerializer):
+class ObjetoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Objetos
+        model = Objeto
         fields = ('id','nombre','recompensa','perdido','foto','coordenadas','categoria')
 
 """
@@ -35,9 +47,9 @@ class CategoriaSerializer(serializers.HyperlinkedModelSerializer):
 El serializador de Mensajes
 """
 
-class MensajesSerializer(serializers.HyperlinkedModelSerializer):
+class MensajeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Mensajes
+        model = Mensaje
         fields = ('id','usuarioEmisor','usuarioReceptor','objeto','comentario','fecha')
 
 

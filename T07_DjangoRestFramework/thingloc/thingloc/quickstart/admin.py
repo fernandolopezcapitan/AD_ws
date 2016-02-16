@@ -4,14 +4,14 @@ from thingloc.quickstart.models import *
 
 
 
-class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('id','username','password','first_name','last_name','email',)
-    list_filter = ('username','first_name','last_name','email',)
-    ordering = ('username',)
-    search_fields = ('username',)
+# class UsuarioAdmin(admin.ModelAdmin):
+#     list_display = ('id','username','password','first_name','last_name','email',)
+#     list_filter = ('username','first_name','last_name','email',)
+#     ordering = ('username',)
+#     search_fields = ('username',)
 
-class ObjetosAdmin(admin.ModelAdmin):
-    list_display = ('id','nombre','recompensa','perdido','foto','coordenadas','categoria')
+class ObjetoAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre','recompensa','perdido','foto','coordenadas','categoria',)
     list_filter = ('nombre','recompensa','categoria',)
     ordering = ('categoria',)
     search_fields = ('nombre',)
@@ -22,13 +22,13 @@ class CategoriaAdmin(admin.ModelAdmin):
     ordering = ('nombre',)
     search_fields = ('nombre',)
 
-class MensajesAdmin(admin.ModelAdmin):
+class MensajeAdmin(admin.ModelAdmin):
     list_display = ('id','usuarioEmisor','usuarioReceptor','objeto','comentario','fecha')
     list_filter = ('usuarioEmisor','usuarioReceptor','objeto','comentario','fecha',)
     ordering = ('fecha',)
-    search_fields = ('objeto',)
+    search_fields = ('usuarioEmisor','usuarioReceptor','objeto','comentario','fecha',)
 
-admin.site.register(Usuario, UsuarioAdmin)
-admin.site.register(Objetos, ObjetosAdmin)
+# admin.site.register(Usuario, UsuarioAdmin)
+admin.site.register(Objeto, ObjetoAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
-admin.site.register(Mensajes, MensajesAdmin)
+admin.site.register(Mensaje, MensajeAdmin)
