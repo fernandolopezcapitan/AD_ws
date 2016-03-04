@@ -280,3 +280,25 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 5. Desde la consola (cmd) sincronizar la base de datos
 
 (env) c:\ruta....>python manage.py migrate
+
+ó
+
+(env) c:\ruta....>python manage.py makemigration
+
+--------------------------------------------------------------- Lunes 22/02/2016
+
+public interface FileUploadService{
+	@Multipart
+	@POST("api/objetos")
+	Call<String> upload(
+		@Part("foto\"; filename=\"image.png\" ª) RequestBody file,
+		@Part("nombre") RequestBody nombre,
+		@Part("recompensa") RequestBody recompensa,
+		@Part("nombre") RequestBody nombre,
+		@Part("nombre") RequestBody nombre,
+		@Part("nombre") RequestBody nombre,
+		@Part("nombre") RequestBody nombre,
+
+	);
+}
+

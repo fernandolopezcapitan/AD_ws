@@ -29,10 +29,11 @@ El serializador de Usuarios
 El serializador de Objetos
 """
 
-class ObjetoSerializer(serializers.HyperlinkedModelSerializer):
+class ObjetoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Objeto
-        fields = ('id','nombre','recompensa','perdido','foto','coordenadas','categoria')
+        fields = ('id','nombre','recompensa','perdido','foto','coordenadas','categoria','usuario')
+
 
 """
 El serializador de Categoría
